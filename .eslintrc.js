@@ -17,11 +17,10 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react-hooks",
+        "react", "react-hooks",
     ],
     "rules": {
         "semi": ["error", "never"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     },
-
 };

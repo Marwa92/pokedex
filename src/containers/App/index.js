@@ -11,7 +11,7 @@ function App() {
         setPokemonList(response.data.results)
       }
     
-       useEffect(() =>{
+      useEffect(() =>{
         fetchPokemonAPI()
       }, [])
     return (
