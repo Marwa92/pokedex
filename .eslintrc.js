@@ -1,6 +1,6 @@
 module.exports = {
     "parser": "babel-eslint",
-    "extends": "airbnb/hooks",
+    "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb/hooks", "prettier"],
     "env": {
         "browser": true,
         "es6": true
@@ -17,10 +17,11 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react", "react-hooks",
+        "react", "react-hooks", "prettier",
     ],
     "rules": {
         "semi": ["error", "never"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "prettier/prettier": ["error"],
     },
 };
