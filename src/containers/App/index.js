@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import APIContext from '../../APIContext'
 import axios from '../../utils/API'
-import HomePage from './test'
+import MainPage from '../MainPage/index'
 
 function App() {
   const [pokemonList, setPokemonList] = useState([])
@@ -17,7 +17,7 @@ function App() {
   return (
     <APIContext.Provider value={pokemonList}>
       <div>pokedex</div>
-      <HomePage />
+      <MainPage />
     </APIContext.Provider>
   )
 }

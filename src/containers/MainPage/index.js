@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import APIContext from '../../APIContext'
 
-export default function HomePage() {
+export default function MainPage() {
   const pokemonList = useContext(APIContext)
 
   console.log('test:', pokemonList)
