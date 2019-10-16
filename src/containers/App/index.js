@@ -5,6 +5,7 @@ import APIContext from '../../utils/APIContext'
 import axios from '../../utils/API'
 import MainPage from '../MainPage/Loadable'
 import Header from '../../components/Header/index'
+import { saveInLocalStorage, getFromLocalStorage } from '../../helper/storage'
 
 const defaultTheme = {
   global: {
@@ -19,7 +20,9 @@ const defaultTheme = {
   },
 }
 function App() {
-  const [pokemonList, setPokemonList] = useState([])
+  const [pokemonList, setPokemonList] = useState(
+    getFromLocalStorage('pokemonList') || [],
+  )
   async function fetchPokemonAPI() {
     const response = await axios('')
     // console.log('response:', response.data)
@@ -28,7 +31,8 @@ function App() {
 
   useEffect(() => {
     fetchPokemonAPI()
-  }, [])
+    saveInLocalStorage('pokemonList', pokemonList)
+  }, [pokemonList])
   return (
     <Grommet theme={defaultTheme}>
       <ResponsiveContext.Consumer>
