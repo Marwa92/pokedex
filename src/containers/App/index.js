@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import APIContext from '../../APIContext'
 import axios from '../../utils/API'
-import MainPage from '../MainPage/index'
+import MainPage from '../MainPage/Loadable'
 import Header from '../../components/Header/index'
 
 function App() {
