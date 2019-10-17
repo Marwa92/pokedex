@@ -1,4 +1,4 @@
-# Simple React JS Project
+# Pokedex
 
 ## What is the use of this Repo
 
