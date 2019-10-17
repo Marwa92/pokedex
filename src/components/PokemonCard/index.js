@@ -9,10 +9,12 @@ const PokemonCard = props => {
   const { match } = props
   const { key } = match.params
   const [pokemonData, setPokemonData] = useState(
+    // TODO: same comment as App
     getFromLocalStorage('pokemonData') || {},
   )
 
   useEffect(() => {
+    // FIXME: same comment as App
     async function fetchPokemonDataAPI() {
       const response = await axios(`${key}`)
       setPokemonData(response.data)

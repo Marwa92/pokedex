@@ -13,6 +13,7 @@ const HoveredBox = styled(RoutedBox)`
   }
 `
 export default function MainPage() {
+  // TODO: after expanding the context to including the loading state you would destruct it from here
   const pokemonList = useContext(APIContext)
 
   return (
@@ -36,6 +37,7 @@ export default function MainPage() {
         ]}
       >
         {pokemonList.map(pokemon => (
+          // TODO: should be a component
           <HoveredBox
             key={pokemon.url}
             path={pokemon.name}
@@ -52,11 +54,19 @@ export default function MainPage() {
         ))}
       </Box>
       <Box gridArea="main">
+        // TODO: while interesting, Switch is meant for known routes not dynamic
+        detail views like the poekomon card one // This is also why you have all
+        the routes apearing, since all of them match the pattern // On another
+        note, what happens if I open a url link to a pokemon that's not one of
+        the first 30
         <Switch>
           {pokemonList.map(pokemon => {
             return (
               <Route
                 key={pokemon.name}
+                // FIXME: this is why your deployed version gets errors
+                // in localhost :key is the pokemon when you click on it
+                // but in production you have pokedex under after host and the router considers it a pokemon
                 path="/:key"
                 render={Props => <PokemonCard {...Props} />}
               />
