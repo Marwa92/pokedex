@@ -48,13 +48,13 @@ const PokemonCard = props => {
       <Box direction="row" gap="xlarge">
         <Text weight="bold" color="black">
           Type:{' '}
-          {pokemonData &&
-            pokemonData.types &&
-            pokemonData.types.map(type => (
-              <Text weight="normal" key={type.type.name}>
-                {`${type.type.name}, `}
-              </Text>
-            ))}
+          {pokemonData && pokemonData.types
+            ? pokemonData.types.map(type => (
+                <Text weight="normal" key={type.type.name}>
+                  {`${type.type.name}, `}
+                </Text>
+              ))
+            : null}
         </Text>
       </Box>
       <Box direction="row" gap="xlarge">
