@@ -60,6 +60,7 @@ const PokemonCard = props => {
         <Text weight="bold" color="black">
           Stats:{' '}
           {pokemonData &&
+            pokemonData.stats &&
             pokemonData.stats.map(stat => (
               <Text weight="normal" key={stat.stat.name}>
                 {`${stat.stat.name}, `}
