@@ -19,7 +19,7 @@ const PokemonCard = props => {
     }
     fetchPokemonDataAPI()
     saveInLocalStorage('pokemonData', pokemonData)
-  }, [key, pokemonData])
+  })
 
   return (
     <Box
