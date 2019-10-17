@@ -49,6 +49,7 @@ const PokemonCard = props => {
         <Text weight="bold" color="black">
           Type:{' '}
           {pokemonData &&
+            pokemonData.types &&
             pokemonData.types.map(type => (
               <Text weight="normal" key={type.type.name}>
                 {`${type.type.name}, `}
