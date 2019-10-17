@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
 import { Grommet, ResponsiveContext } from 'grommet'
+import { Route } from 'react-router-dom'
 import APIContext from '../../utils/APIContext'
 import axios from '../../utils/API'
 import MainPage from '../MainPage/Loadable'
@@ -23,13 +23,12 @@ function App() {
   const [pokemonList, setPokemonList] = useState(
     getFromLocalStorage('pokemonList') || [],
   )
-  async function fetchPokemonAPI() {
-    const response = await axios('')
-    // console.log('response:', response.data)
-    setPokemonList(response.data.results)
-  }
 
   useEffect(() => {
+    async function fetchPokemonAPI() {
+      const response = await axios('?limit=30')
+      setPokemonList(response.data.results)
+    }
     fetchPokemonAPI()
     saveInLocalStorage('pokemonList', pokemonList)
   }, [pokemonList])
@@ -37,11 +36,12 @@ function App() {
     <Grommet theme={defaultTheme}>
       <ResponsiveContext.Consumer>
         {size => {
-          console.log('size', size)
           return (
             <APIContext.Provider value={pokemonList}>
               <Header />
-              <Route exact path="/" component={MainPage} />
+              <MainPage size={size} />
+              <MainPage />
+              <Route path="/" component={MainPage} />
             </APIContext.Provider>
           )
         }}
