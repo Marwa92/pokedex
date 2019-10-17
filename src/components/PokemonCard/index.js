@@ -33,7 +33,9 @@ const PokemonCard = props => {
     >
       <Box align="center" margin={{ top: '1em' }}>
         <ImageStamp
-          src={`${pokemonData.sprites.front_default}`}
+          src={`${pokemonData &&
+            pokemonData.sprites &&
+            pokemonData.sprites.front_default}`}
           size="large"
           round="full"
         />
