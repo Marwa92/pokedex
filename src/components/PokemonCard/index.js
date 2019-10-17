@@ -60,13 +60,13 @@ const PokemonCard = props => {
       <Box direction="row" gap="xlarge">
         <Text weight="bold" color="black">
           Stats:{' '}
-          {pokemonData &&
-            pokemonData.stats &&
-            pokemonData.stats.map(stat => (
-              <Text weight="normal" key={stat.stat.name}>
-                {`${stat.stat.name}, `}
-              </Text>
-            ))}
+          {pokemonData
+            ? pokemonData.stats.map(stat => (
+                <Text weight="normal" key={stat.stat.name}>
+                  {`${stat.stat.name}, `}
+                </Text>
+              ))
+            : null}
         </Text>
       </Box>
     </Box>
