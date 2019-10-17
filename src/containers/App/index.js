@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     async function fetchPokemonAPI() {
-      const response = await axios('')
+      const response = await axios('?limit=30')
       setPokemonList(response.data.results)
     }
     fetchPokemonAPI()
