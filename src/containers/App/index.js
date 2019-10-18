@@ -46,10 +46,7 @@ function App() {
     //   // FIXME: handle error either here or generally in axios
     //   setPokemonList(response.data.results)
     // }
-    // FIXME: should only call once;
-    // Effect gets called everytime because the function fetchPokemonAPI calls setPoekmonList
-    // with a new array everytime; which is a new object reference, so the effect runs over and over
- 
+
     setList()
   }, [pokemonList])
 
