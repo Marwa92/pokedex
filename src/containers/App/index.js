@@ -34,14 +34,14 @@ function App() {
       if (pokemonList.length === 0) {
         const response = await fetchPokemonAPI()
         setPokemonList(response.results)
-        saveInLocalStorage('pokemonList', pokemonList)
       } else {
         return pokemonList
       }
     }
+    saveInLocalStorage('pokemonList', pokemonList)
+    console.log('test:', pokemonList)
 
     // async function fetchPokemonAPI() {
-    //   // FIXME: should check if component is already cached
     //   const response = await axios('?limit=30')
     //   // FIXME: handle error either here or generally in axios
     //   setPokemonList(response.data.results)
@@ -49,9 +49,8 @@ function App() {
     // FIXME: should only call once;
     // Effect gets called everytime because the function fetchPokemonAPI calls setPoekmonList
     // with a new array everytime; which is a new object reference, so the effect runs over and over
-    // fetchPokemonAPI()
+ 
     setList()
-    // FIXME: should cache after fetch resolves
   }, [pokemonList])
 
   return (
