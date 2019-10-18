@@ -54,11 +54,11 @@ export default function MainPage() {
         ))}
       </Box>
       <Box gridArea="main">
-        // TODO: while interesting, Switch is meant for known routes not dynamic
+        {/* // TODO: while interesting, Switch is meant for known routes not dynamic
         detail views like the poekomon card one // This is also why you have all
         the routes apearing, since all of them match the pattern // On another
         note, what happens if I open a url link to a pokemon that's not one of
-        the first 30
+        the first 30 */}
         <Switch>
           {pokemonList.map(pokemon => {
             return (
