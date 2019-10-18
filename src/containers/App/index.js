@@ -39,13 +39,8 @@ function App() {
       }
     }
     saveInLocalStorage('pokemonList', pokemonList)
-    console.log('test:', pokemonList)
 
-    // async function fetchPokemonAPI() {
-    //   const response = await axios('?limit=30')
     //   // FIXME: handle error either here or generally in axios
-    //   setPokemonList(response.data.results)
-    // }
 
     setList()
   }, [pokemonList])

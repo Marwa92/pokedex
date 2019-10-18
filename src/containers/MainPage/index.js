@@ -1,17 +1,10 @@
 import React, { useContext } from 'react'
 import { Grid, Box, Text } from 'grommet'
 import { Switch, Route } from 'react-router-dom'
-import styled from 'styled-components'
-import RoutedBox from '../../components/RoutedBox/index'
+import Sidebar from '../../components/Sidebar/index'
 import PokemonCard from '../../components/PokemonCard/Loadable'
 import APIContext from '../../utils/APIContext'
 
-const HoveredBox = styled(RoutedBox)`
-  :hover {
-    background: grey;
-    color: blue;
-  }
-`
 export default function MainPage() {
   // TODO: after expanding the context to including the loading state you would destruct it from here
   const pokemonList = useContext(APIContext)
@@ -38,19 +31,11 @@ export default function MainPage() {
       >
         {pokemonList.map(pokemon => (
           // TODO: should be a component
-          <HoveredBox
+          <Sidebar
             key={pokemon.url}
-            path={pokemon.name}
-            direction="row"
-            gap="small"
-            pad={{ left: 'large', vertical: 'small' }}
-            border={{ color: '#E5E4D7', size: 'xsmall', style: 'hidden' }}
-          >
-            <Text>{pokemon.name}</Text>
-            <Box round background="#3BE4E7" border>
-              <Text color="black">{pokemonList.indexOf(pokemon) + 1}</Text>
-            </Box>
-          </HoveredBox>
+            name={pokemon.name}
+            number={pokemonList.indexOf(pokemon) + 1}
+          />
         ))}
       </Box>
       <Box gridArea="main">
