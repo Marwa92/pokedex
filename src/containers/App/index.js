@@ -20,22 +20,26 @@ const defaultTheme = {
   },
 }
 function App() {
-  const [pokemonList, setPokemonList] = useState([])
+  const [pokemonList, setPokemonList] = useState(
+    getFromLocalStorage('pokemonList') || [],
+  )
   // TODO: Good idea but only useful on the first run, afterwards the ruturn value is ignored
   // preferably get and set storage should be async and is therefor something that happens as an effect
   // in the case where poekmonList becomes too large, you delay the render cycle for no reason
-  //   getFromLocalStorage('pokemonList') || [],
-  // )
 
   // TODO: have a loading state for when the pokemonAPI is loading and indicate it
 
   useEffect(() => {
     async function setList() {
-      const response = await fetchPokemonAPI()
-      setPokemonList(response.results)
+      if (pokemonList.length === 0) {
+        const response = await fetchPokemonAPI()
+        setPokemonList(response.results)
+        saveInLocalStorage('pokemonList', pokemonList)
+      } else {
+        return pokemonList
+      }
     }
 
-    console.log('test:', pokemonList)
     // async function fetchPokemonAPI() {
     //   // FIXME: should check if component is already cached
     //   const response = await axios('?limit=30')
@@ -48,7 +52,6 @@ function App() {
     // fetchPokemonAPI()
     setList()
     // FIXME: should cache after fetch resolves
-    saveInLocalStorage('pokemonList', pokemonList)
   }, [pokemonList])
 
   return (
