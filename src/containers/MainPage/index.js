@@ -51,7 +51,8 @@ export default function MainPage() {
                 // FIXME: this is why your deployed version gets errors
                 // in localhost :key is the pokemon when you click on it
                 // but in production you have pokedex under after host and the router considers it a pokemon
-                path="/:key"
+                // path="to/page(:/key)(/pokedex/:key)"
+                path="/:key?"
                 render={Props => <PokemonCard {...Props} />}
               />
             )
