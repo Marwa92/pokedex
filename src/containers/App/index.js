@@ -5,7 +5,7 @@ import APIContext from '../../utils/APIContext'
 import MainPage from '../MainPage/Loadable'
 import Header from '../../components/Header/index'
 import { saveInLocalStorage, getFromLocalStorage } from '../../helper/storage'
-import fetchPokemonAPI from '../../services/pokemon'
+import fetchPokemonAPI from '../../services/pokemonList'
 
 const defaultTheme = {
   global: {
@@ -39,9 +39,6 @@ function App() {
       }
     }
     saveInLocalStorage('pokemonList', pokemonList)
-
-    //   // FIXME: handle error either here or generally in axios
-
     setList()
   }, [pokemonList])
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Grid, Box, Text } from 'grommet'
+import { Grid, Box } from 'grommet'
 import { Switch, Route } from 'react-router-dom'
 import Sidebar from '../../components/Sidebar/index'
 import PokemonCard from '../../components/PokemonCard/Loadable'
@@ -30,7 +30,6 @@ export default function MainPage() {
         ]}
       >
         {pokemonList.map(pokemon => (
-          // TODO: should be a component
           <Sidebar
             key={pokemon.url}
             name={pokemon.name}
