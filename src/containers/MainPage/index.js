@@ -52,7 +52,7 @@ export default function MainPage() {
                 // in localhost :key is the pokemon when you click on it
                 // but in production you have pokedex under after host and the router considers it a pokemon
                 // path="to/page(:/key)(/pokedex/:key)"
-                path="/:key?"
+                path="/:var?/:key"
                 render={Props => <PokemonCard {...Props} />}
               />
             )
