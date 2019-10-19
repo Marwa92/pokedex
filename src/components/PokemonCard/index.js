@@ -8,6 +8,8 @@ import { saveInLocalStorage, getFromLocalStorage } from '../../helper/storage'
 const PokemonCard = props => {
   const { match } = props
   const { key } = match.params
+  console.log('match:', match)
+
   const [pokemonData, setPokemonData] = useState(
     getFromLocalStorage('pokemonData') || {},
   )
