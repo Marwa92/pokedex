@@ -2,26 +2,34 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Text } from 'grommet'
 import { ImageStamp } from 'grommet-controls'
-import axios from '../../utils/API'
+import fetchPokemonDataAPI from '../../services/pokemonData'
 import { saveInLocalStorage, getFromLocalStorage } from '../../helper/storage'
 
 const PokemonCard = props => {
   const { match } = props
   const { key } = match.params
+  console.log('match:', match)
+
   const [pokemonData, setPokemonData] = useState(
-    // TODO: same comment as App
     getFromLocalStorage('pokemonData') || {},
   )
+  // TODO: same comment as App
 
   useEffect(() => {
-    // FIXME: same comment as App
-    async function fetchPokemonDataAPI() {
-      const response = await axios(`${key}`)
-      setPokemonData(response.data)
+    async function setData() {
+      if (
+        (pokemonData && pokemonData.name !== key) ||
+        Object.keys(pokemonData).length === 0
+      ) {
+        const response = await fetchPokemonDataAPI(key)
+        setPokemonData(response)
+      } else {
+        return pokemonData
+      }
     }
-    fetchPokemonDataAPI()
     saveInLocalStorage('pokemonData', pokemonData)
-  })
+    setData()
+  }, [key, pokemonData])
 
   return (
     <Box
