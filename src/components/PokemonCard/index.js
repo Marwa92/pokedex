@@ -9,27 +9,6 @@ const PokemonCard = props => {
   const { match } = props
   const { key } = match.params
 
-  const [pokemonData, setPokemonData] = useState(
-    getFromLocalStorage('pokemonData') || {},
-  )
-  // TODO: same comment as App
-
-  useEffect(() => {
-    async function setData() {
-      if (
-        (pokemonData && pokemonData.name !== key) ||
-        Object.keys(pokemonData).length === 0
-      ) {
-        const response = await fetchPokemonDataAPI(key)
-        setPokemonData(response)
-      } else {
-        return pokemonData
-      }
-    }
-    saveInLocalStorage('pokemonData', pokemonData)
-    setData()
-  }, [key, pokemonData])
-
   return (
     <Box
       border={{ color: 'brand', size: 'small' }}

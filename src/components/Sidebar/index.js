@@ -12,7 +12,7 @@ const HoveredBox = styled(RoutedBox)`
 `
 
 const Sidebar = props => {
-  const { name, number } = props
+  const { name, number, url } = props
   return (
     <HoveredBox
       path={name}
@@ -20,6 +20,9 @@ const Sidebar = props => {
       gap="small"
       pad={{ left: 'large', vertical: 'small' }}
       border={{ color: '#E5E4D7', size: 'xsmall', style: 'hidden' }}
+      onHover={event => {
+        return console.log('test:', event)
+      }}
     >
       <Text>{name}</Text>
       <Box round background="#3BE4E7" border>
@@ -32,5 +35,6 @@ const Sidebar = props => {
 Sidebar.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
 }
 export default Sidebar

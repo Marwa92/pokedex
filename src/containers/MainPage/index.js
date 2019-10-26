@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Grid, Box } from 'grommet'
 import { Switch, Route } from 'react-router-dom'
 import Sidebar from '../../components/Sidebar/index'
@@ -32,6 +32,7 @@ export default function MainPage() {
         {pokemonList.map(pokemon => (
           <Sidebar
             key={pokemon.url}
+            url={pokemon.url}
             name={pokemon.name}
             number={pokemonList.indexOf(pokemon) + 1}
           />
